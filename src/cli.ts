@@ -37,7 +37,7 @@ const main = defineCommand({
         consola.success('Installed')
       }
     }
-    else if (selected === 'unistall') {
+    else if (selected === 'uninstall') {
       const ids_uninstall = await consola.prompt('Select the plugins to uninstall:', {
         type: 'multiselect',
         options: installed().map(({ id }) => id),
