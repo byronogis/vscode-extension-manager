@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { readFileSync } from 'node:fs'
 import { defineCommand, runMain } from 'citty'
 import { consola } from 'consola'
 import { description, name, version } from '../package.json'
@@ -23,10 +24,31 @@ const main = defineCommand({
     })
 
     if (selected === 'install') {
-      const ids_install = await consola.prompt('Enter extension IDs (separated by commas):', {
-        type: 'text',
-        placeholder: 'pub.name,pub.name,...',
+      const installWay = await consola.prompt('Select the installation method:', {
+        type: 'select',
+        options: ['manual', 'profile'],
+        initial: 'manual',
       })
+
+      let ids_install
+      if (installWay === 'manual') {
+        ids_install = await consola.prompt('Enter extension IDs (separated by commas):', {
+          type: 'text',
+          placeholder: 'pub.name,pub.name,...',
+        })
+      }
+      else if (installWay === 'profile') {
+        const profilePath = await consola.prompt('Profile path(absolute path):', {
+          type: 'text',
+          placeholder: '/absolute/path/to/profile',
+        })
+        const rawContent = readFileSync(profilePath, {
+          encoding: 'utf-8',
+        })
+        ids_install = JSON.parse(JSON.parse(rawContent).extensions)
+          .map((i: any) => i.identifier.id)
+          .join(',')
+      }
 
       if (!ids_install) {
         consola.warn('No extension to install.')
