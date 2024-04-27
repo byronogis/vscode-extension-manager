@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.0.3
+
+[compare changes](https://github.com/byronogis/vscode-extension-manager/compare/v0.0.2...v0.0.3)
+
+### 🚀 Enhancements
+
+- Install by profile ([8e0ac33](https://github.com/byronogis/vscode-extension-manager/commit/8e0ac33))
+
+### ❤️ Contributors
+
+- Byronogis ([@byronogis](http://github.com/byronogis))
+
 ## v0.0.2
 
 [compare changes](https://github.com/byronogis/vscode-extension-manager/compare/v0.0.1...v0.0.2)
