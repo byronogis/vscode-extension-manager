@@ -9,7 +9,10 @@
     "email": "byronogis@outlook.com"
   },
   "license": "MIT",
-  "repository": "byronogis/vscode-extension-manager",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/byronogis/vscode-extension-manager.git"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -20,7 +23,7 @@
   "main": "./dist/index.cjs",
   "types": "./dist/index.d.ts",
   "bin": {
-    "vscem": "./dist/cli.mjs"
+    "vscem": "dist/cli.mjs"
   },
   "files": [
     "dist"
